@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2b8cf83df584d4ff1a50890f19086c99
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - assets: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  - player: {instanceID: 0}
+  - roadGenerator: {instanceID: 0}
+  - distanceText: {instanceID: 0}
+  - finalDistanceText: {instanceID: 0}
+  - pausePanel: {instanceID: 0}
+  - gameOverPanel: {instanceID: 0}
+  - playButton: {instanceID: 0}
+  - pauseButton: {instanceID: 0}
+  - restartButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

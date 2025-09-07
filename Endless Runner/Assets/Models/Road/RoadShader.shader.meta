@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5c79094832d264976bff85027fb44f90
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _RoadTexture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+  - _RoadNormalMap: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
+  - _SidewalkTexture: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
+  - _SidewalkNormalMap: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
+  - _LineTexture: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
+  - _LineNormalMap: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
