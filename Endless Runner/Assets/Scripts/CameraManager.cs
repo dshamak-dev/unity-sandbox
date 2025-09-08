@@ -8,12 +8,12 @@ public class CameraManager : MonoBehaviour
     public InputActionMap input;
 
     public GameObject liveCamera;
-    public CinemachineFollow cameraFollow;
+    public CinemachineOrbitalFollow cameraFollow;
 
     public List<Vector3> presets = new List<Vector3>()
     {
-        new Vector3(-16, 16, -6),
-        new Vector3(16, 16, -6)
+        new Vector3(-26, 12, 2),
+        new Vector3(26, 12, 2)
     };
 
     public int activePresetIndex = -1;
@@ -45,9 +45,9 @@ public class CameraManager : MonoBehaviour
 
         camera.Follow = traget;
 
-        cameraFollow = liveCamera.GetComponent<CinemachineFollow>();
+        cameraFollow = liveCamera.GetComponent<CinemachineOrbitalFollow>();
 
-        targetPosition = cameraFollow.FollowOffset;
+        targetPosition = cameraFollow.TargetOffset;
 
         if (GameManager.Instance != null)
         {
@@ -72,9 +72,9 @@ public class CameraManager : MonoBehaviour
             SetNextCameraPosition();
         }
 
-        if (targetPosition != cameraFollow.FollowOffset)
+        if (targetPosition != cameraFollow.TargetOffset)
         {
-            cameraFollow.FollowOffset = Vector3.Lerp(cameraFollow.FollowOffset, targetPosition, Time.deltaTime);
+            cameraFollow.TargetOffset = Vector3.Lerp(cameraFollow.TargetOffset, targetPosition, Time.deltaTime);
         }
     }
 }

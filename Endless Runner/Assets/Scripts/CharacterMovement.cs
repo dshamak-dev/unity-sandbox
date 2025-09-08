@@ -7,10 +7,11 @@ public class CharacterMovement : MonoBehaviour
 
     public GameManager gameManager;
 
-    private InputAction moveLeftAction;
-    private InputAction moveRightAction;
-
     private InputAction moveAction;
+    private InputAction speedAction;
+
+    public float maxSpeed = 0;
+    public float minSpeed = 0;
 
     bool canMove
     {
@@ -77,8 +78,13 @@ public class CharacterMovement : MonoBehaviour
         character.targetPosition = transform.position;
         character.isRunning = true;
 
-        if (character.input != null) { 
+        maxSpeed = character.maxForwardSpeed;
+        minSpeed = character.forwardSpeed;
+
+        if (character.input != null)
+        {
             moveAction = character.input.FindAction("Move");
+            speedAction = character.input.FindAction("Move");
         }
     }
 
@@ -86,7 +92,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!character.isRunning || !canMove) return;
 
-        forwardSpeed = Mathf.Lerp(forwardSpeed, character.maxForwardSpeed, character.forwardAcceleration * Time.deltaTime);
+        forwardSpeed = Mathf.Lerp(forwardSpeed, maxSpeed, character.forwardAcceleration * Time.deltaTime);
 
         // Move forward continuously
         transform.Translate(Vector3.forward * character.forwardSpeed * Time.deltaTime);
@@ -98,11 +104,18 @@ public class CharacterMovement : MonoBehaviour
 
             ChangeLane((int)moveInput.x);
         }
+        
+        if (speedAction != null && speedAction.triggered)
+        {
+            Vector2 speedInput = speedAction.ReadValue<Vector2>();
+
+            ChangeSpeed((int)speedInput.y);
+        }
 
         // Smoothly move to target lane position
         if (transform.position != character.targetPosition)
         {
-            float sideSpeed = Mathf.Min(character.maxSideSpeed, 
+            float sideSpeed = Mathf.Min(character.maxSideSpeed,
                 forwardSpeed * character.sideSpeedFactor);
 
             Vector3 targetPos = targetPosition;
@@ -110,7 +123,7 @@ public class CharacterMovement : MonoBehaviour
             targetPos.z = transform.position.z; // Keep current z position
             targetPos.y = transform.position.y; // Keep current y position
 
-            transform.position = Vector3.MoveTowards(transform.position, 
+            transform.position = Vector3.MoveTowards(transform.position,
                 targetPos, sideSpeed * Time.deltaTime);
         }
     }
@@ -123,6 +136,18 @@ public class CharacterMovement : MonoBehaviour
             currentLane = newLane;
             targetPosition = new Vector3(lanePositions[currentLane], 
                 transform.position.y, transform.position.z);
+        }
+    }
+
+    void ChangeSpeed(int direction)
+    {
+        if (direction > 0)
+        {
+            maxSpeed += character.maxForwardSpeed;
+        }
+        else if (direction < 0)
+        {
+            maxSpeed = Mathf.Max(maxSpeed - character.maxForwardSpeed, character.maxForwardSpeed);
         }
     }
 

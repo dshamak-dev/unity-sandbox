@@ -18,7 +18,7 @@ public class PrefabSearch : MonoBehaviour
         // Validate inputs
         if (string.IsNullOrEmpty(folderPath) || string.IsNullOrEmpty(nameStartsWith))
         {
-            Debug.LogWarning("Folder path and name filter cannot be null or empty");
+            // Debug.LogWarning("Folder path and name filter cannot be null or empty");
             return foundPrefabs;
         }
         
@@ -65,10 +65,10 @@ public class PrefabSearch : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"Error searching for prefabs: {e.Message}");
+            // Debug.LogError($"Error searching for prefabs: {e.Message}");
         }
         
-        Debug.Log($"Found {foundPrefabs.Count} prefabs in '{folderPath}' starting with '{nameStartsWith}'");
+        // Debug.Log($"Found {foundPrefabs.Count} prefabs in '{folderPath}' starting with '{nameStartsWith}'");
         return foundPrefabs;
     }
     #endif
@@ -107,7 +107,7 @@ public class PrefabSearch : MonoBehaviour
             Debug.LogError($"Error searching for prefabs at runtime: {e.Message}");
         }
         
-        Debug.Log($"Found {foundPrefabs.Count} prefabs in '{folderPath}' starting with '{nameStartsWith}' at runtime");
+        // Debug.Log($"Found {foundPrefabs.Count} prefabs in '{folderPath}' starting with '{nameStartsWith}' at runtime");
         return foundPrefabs;
     }
     

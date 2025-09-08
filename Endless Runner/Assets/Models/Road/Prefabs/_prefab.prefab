@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5051928459519667460}
   - component: {fileID: -7147560256566413533}
   m_Layer: 0
-  m_Name: Road Prefab
+  m_Name: _prefab
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

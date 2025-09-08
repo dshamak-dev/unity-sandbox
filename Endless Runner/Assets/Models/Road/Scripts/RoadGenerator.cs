@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 
 public class RoadGenerator : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class RoadGenerator : MonoBehaviour
 
     public int maxRoads = 10;
     public float zSpawn = 0;
-    public float roadLength = 10;
+    public float roadLength = 35;
+    public float roadWidth = 26;
+
+    public int lanesCount = 3;
+
+    public float sidewalkWidth = 5;
 
     private List<GameObject> activeRoads = new List<GameObject>();
 
-    public float[] lanePositions = { -2.5f, 0f, 2.5f };
+    public float[] lanePositions = { 0f };
 
     [SerializeField] private string folder = "Assets/Models/Road/Prefabs";
     [SerializeField] private string nameStartsWith = "Road";
@@ -27,6 +33,27 @@ public class RoadGenerator : MonoBehaviour
     void Start()
     {
         player = GameManager.Instance.player.transform;
+
+        float lanesWidth = roadWidth - 2 * sidewalkWidth;
+
+        lanePositions = new float[lanesCount];
+        
+        float laneWidth = lanesWidth / lanesCount;
+
+        for (int i = 0; i < lanesCount; i++)
+        {
+            int laneOffset = i - (lanesCount / 2);
+            float lanePosition = laneWidth * laneOffset;
+
+            float offset = lanePosition == 0 ? 1f : 2f;
+
+            if (lanePosition < 0)
+            {
+                offset *= -1;
+            }
+
+            lanePositions[i] = lanePosition + offset;
+        }
 
         // Initialize with initial road pieces
         for (int i = 0; i < initialRoadPieces; i++)

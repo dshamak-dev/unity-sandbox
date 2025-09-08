@@ -7,21 +7,18 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AdvancedRoadURP
-  m_Shader: {fileID: 4800000, guid: 5fa54bcf3971346218620e490c3ae619, type: 3}
+  m_Name: SkyBoxDark
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-  m_InvalidKeywords:
-  - _HASDASHEDSEPARATOR_ON
-  - _HASLEFTSIDEWALK_ON
-  - _HASRIGHTSIDEWALK_ON
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -52,14 +49,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _LineNormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _LineTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -74,22 +63,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _RoadNormalMap:
-        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _RoadTexture:
-        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SidewalkNormalMap:
-        m_Texture: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SidewalkTexture:
-        m_Texture: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -115,10 +88,6 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BorderLineEmission: 0.3
-    - _BorderLineMetallic: 0
-    - _BorderLineSmoothness: 0.7
-    - _BorderLineWidth: 0.01
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -132,56 +101,28 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HasDashedSeparator: 1
-    - _HasLeftSidewalk: 1
-    - _HasRightSidewalk: 1
-    - _LeftSidewalkWidth: 0.15
-    - _LineDashRatio: 0.5
-    - _LineEmission: 0.5
-    - _LineMetallic: 0
-    - _LineNormalScale: 1
-    - _LineRepeat: 5
-    - _LineSmoothness: 0.8
-    - _LineTextureScale: 1
-    - _LineWidth: 0.02
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RightSidewalkWidth: 0.15
-    - _RoadLinesAmount: 1
-    - _RoadMetallic: 0.799
-    - _RoadNormalScale: 1
-    - _RoadSmoothness: 0.1
-    - _RoadTextureScale: 1
-    - _SidewalkMetallic: 0
-    - _SidewalkNormalScale: 1
-    - _SidewalkSmoothness: 0.3
-    - _SidewalkTextureScale: 1
     - _Smoothness: 0.5
-    - _SmoothnessTextureChannel: 1
+    - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _TransitionSharpness: 5
-    - _UVRotation: 0
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
-    - _BorderLineColor: {r: 1, g: 0.90058327, b: 0, a: 1}
-    - _Color: {r: 0.22641507, g: 0.22641507, b: 0.22641507, a: 1}
+    - _BaseColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    - _Color: {r: 0.34905657, g: 0.34905657, b: 0.34905657, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LineColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RoadColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SidewalkColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &1258338774248966161
+--- !u!114 &608769794903458339
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
