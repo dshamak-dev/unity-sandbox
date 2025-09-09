@@ -8,10 +8,24 @@ public class Car : MonoBehaviour
 
     public LightManager lightM;
 
+    public CarController controller;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lightM = GameManager.Instance.GetComponent<LightManager>();
+        if (controller == null)
+        {
+            controller = GetComponent<CarController>();
+        }
+
+        if (GameManager.Instance != null)
+        {
+            lightM = GameManager.Instance.GetComponent<LightManager>();
+        }
+        else
+        {
+            isLightsOn = true;
+        }
 
         SwitchLights(isLightsOn);
     }
@@ -19,6 +33,14 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateLight();
+    }
+
+    void UpdateLight() {
+        if (!lightM) {
+            return;
+        }
+
         if (lightM.isDay != !isLightsOn)
         {
             SwitchLights(!lightM.isDay);

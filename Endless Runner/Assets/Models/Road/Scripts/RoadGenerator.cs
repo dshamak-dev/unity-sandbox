@@ -6,9 +6,9 @@ using Unity.Burst.Intrinsics;
 public class RoadGenerator : MonoBehaviour
 {
     public Transform player;
-    public int initialRoadPieces = 8;
+    public int initialRoadPieces = 11;
 
-    public int maxRoads = 10;
+    public int maxRoads = 12;
     public float zSpawn = 0;
     public float roadLength = 35;
     public float roadWidth = 26;

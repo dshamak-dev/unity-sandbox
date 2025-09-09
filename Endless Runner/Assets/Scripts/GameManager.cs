@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
         {
             GameObject playerObj = Instantiate(CharacterPrefab, new Vector3(0, 2, 0), Quaternion.identity).gameObject;
             player = playerObj.GetComponent<Character>();
+
+            player.enabled = true;
         }
 
         roadGenerator = gameObject.AddComponent<RoadGenerator>();

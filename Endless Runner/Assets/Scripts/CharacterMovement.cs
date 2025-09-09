@@ -8,8 +8,9 @@ public class CharacterMovement : MonoBehaviour
     public GameManager gameManager;
 
     private InputAction moveAction;
-    private InputAction speedAction;
+    private InputAction gearAction;
 
+    public int gear = 1;
     public float maxSpeed = 0;
     public float minSpeed = 0;
 
@@ -84,7 +85,7 @@ public class CharacterMovement : MonoBehaviour
         if (character.input != null)
         {
             moveAction = character.input.FindAction("Move");
-            speedAction = character.input.FindAction("Move");
+            gearAction = character.input.FindAction("Move");
         }
     }
 
@@ -105,11 +106,11 @@ public class CharacterMovement : MonoBehaviour
             ChangeLane((int)moveInput.x);
         }
         
-        if (speedAction != null && speedAction.triggered)
+        if (gearAction != null && gearAction.triggered)
         {
-            Vector2 speedInput = speedAction.ReadValue<Vector2>();
+            Vector2 gearInput = gearAction.ReadValue<Vector2>();
 
-            ChangeSpeed((int)speedInput.y);
+            ChangeGear((int)gearInput.y);
         }
 
         // Smoothly move to target lane position
@@ -139,16 +140,11 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    void ChangeSpeed(int direction)
+    void ChangeGear(int gearInput)
     {
-        if (direction > 0)
-        {
-            maxSpeed += character.maxForwardSpeed;
-        }
-        else if (direction < 0)
-        {
-            maxSpeed = Mathf.Max(maxSpeed - character.maxForwardSpeed, character.maxForwardSpeed);
-        }
+        gear = Mathf.Max(0, Mathf.Min(4, gear + gearInput));
+
+        maxSpeed = gear * character.maxForwardSpeed;
     }
 
     void OnCollisionEnter(Collision collision)
