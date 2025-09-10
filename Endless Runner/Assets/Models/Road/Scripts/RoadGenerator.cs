@@ -45,7 +45,7 @@ public class RoadGenerator : MonoBehaviour
             int laneOffset = i - (lanesCount / 2);
             float lanePosition = laneWidth * laneOffset;
 
-            float offset = lanePosition == 0 ? 1f : 2f;
+            float offset = lanePosition == 0 ? 0 : 1.5f;
 
             if (lanePosition < 0)
             {

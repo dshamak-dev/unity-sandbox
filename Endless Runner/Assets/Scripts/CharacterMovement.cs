@@ -116,8 +116,7 @@ public class CharacterMovement : MonoBehaviour
         // Smoothly move to target lane position
         if (transform.position != character.targetPosition)
         {
-            float sideSpeed = Mathf.Min(character.maxSideSpeed,
-                forwardSpeed * character.sideSpeedFactor);
+            float sideSpeed = character.forwardSpeed;
 
             Vector3 targetPos = targetPosition;
 
@@ -125,7 +124,7 @@ public class CharacterMovement : MonoBehaviour
             targetPos.y = transform.position.y; // Keep current y position
 
             transform.position = Vector3.MoveTowards(transform.position,
-                targetPos, sideSpeed * Time.deltaTime);
+                targetPos, sideSpeed * character.sideSpeedFactor * Time.deltaTime);
         }
     }
 
